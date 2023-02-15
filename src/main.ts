@@ -3,8 +3,6 @@ import {DocumentBuilder} from '@nestjs/swagger';
 import {SwaggerModule} from '@nestjs/swagger/dist';
 import {AppModule} from './app.module';
 import {Logger} from "@nestjs/common";
-import {AppStartedEvent} from "./events/app-started.event";
-import {EventEmitter2} from "@nestjs/event-emitter";
 
 async function bootstrap() {
     const logger = new Logger('bootstrap');
@@ -21,11 +19,6 @@ async function bootstrap() {
     SwaggerModule.setup('api', app, document);
 
     await app.listen(process.env.PORT, () => {
-
-        const eventEmitter = new EventEmitter2();
-        const appStartedEvent = new AppStartedEvent();
-        eventEmitter.emit('nestApp.started', appStartedEvent);
-        appStartedEvent.message = 'this is the init message';
 
     });
 }
