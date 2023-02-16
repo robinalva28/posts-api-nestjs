@@ -34,6 +34,11 @@ $ npm install
 
 ## Running the app
 
+## First - run the docker that contains the postgresDB
+
+```bash
+$ docker compose up -d
+
 ```bash
 # development
 $ npm run start
