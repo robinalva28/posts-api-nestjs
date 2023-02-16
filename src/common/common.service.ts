@@ -6,7 +6,6 @@ import {CommentRestClientRepository} from "./repositories/commentsrestclient.rep
 import {PostRestClientRepository} from "./repositories/postsrestclient.repository";
 import {Post} from "../posts/entities/post.entity";
 import {OnEvent} from "@nestjs/event-emitter";
-import {AppStartedEvent} from "../events/app-started.event";
 
 @Injectable()
 export class CommonService {
