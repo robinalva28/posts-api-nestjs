@@ -1,5 +1,5 @@
 import {Column, Entity, JoinTable, ManyToOne, PrimaryColumn} from "typeorm";
-import {Post} from "../../posts/entities/post.entity";
+import {Post} from "./post.entity";
 
 @Entity()
 export class Comment {

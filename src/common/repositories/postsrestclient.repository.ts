@@ -9,11 +9,13 @@ export class PostRestClientRepository {
     constructor(public readonly httpService: HttpService) {
     }
 
+    private postsApiUrl: string = process.env.POSTS_API_URL;
+
     async getAllPostsFromApi(): Promise<Post[]> {
         //This action consumes an external API to get all posts and persists in our own DB
         const {data} = await firstValueFrom(
             this.httpService.get(
-                'https://jsonplaceholder.typicode.com/posts',
+                this.postsApiUrl,
             ).pipe(
                 catchError((error: AxiosError) => {
                     throw new Error(`Error in internal rest client ${error}`);

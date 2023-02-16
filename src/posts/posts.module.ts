@@ -4,7 +4,7 @@ import {PostsController} from './posts.controller';
 import {PostsService} from './posts.service';
 import {TypeOrmModule} from "@nestjs/typeorm";
 import {Post} from "./entities/post.entity";
-import {Comment} from "../comments/entities/comment.entity";
+import {Comment} from "./entities/comment.entity";
 
 @Module({
     imports: [

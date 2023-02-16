@@ -5,9 +5,8 @@ import {CommentRestClientRepository} from "./repositories/commentsrestclient.rep
 import {HttpModule} from "@nestjs/axios";
 import {TypeOrmModule} from "@nestjs/typeorm";
 import {Post} from "../posts/entities/post.entity";
-import {Comment} from "../comments/entities/comment.entity";
+import {Comment} from "../posts/entities/comment.entity";
 import {PostsModule} from "../posts/posts.module";
-import {CommentsModule} from "../comments/comments.module";
 import {EventEmitterModule} from "@nestjs/event-emitter";
 import { CommonController } from './common.controller';
 
@@ -16,7 +15,6 @@ import { CommonController } from './common.controller';
         EventEmitterModule.forRoot(),
         HttpModule,
         PostsModule,
-        CommentsModule,
         TypeOrmModule.forFeature([Post, Comment])
     ],
     controllers: [CommonController],

@@ -1,8 +1,5 @@
 import {Module} from '@nestjs/common';
 import {ConfigModule} from '@nestjs/config';
-import {CommentsController} from './comments/comments.controller';
-import {CommentsModule} from './comments/comments.module';
-import {CommentsService} from './comments/comments.service';
 import {PostsController} from './posts/posts.controller';
 import {PostsModule} from './posts/posts.module';
 import {PostsService} from './posts/posts.service';
@@ -20,7 +17,6 @@ import {NotificationsModule} from './notifications/notifications.module';
         EventEmitterModule.forRoot({global:true}),
         PostsModule,
         HttpModule,
-        CommentsModule,
         CommonModule,
         ConfigModule.forRoot(),
         TypeOrmModule.forRoot({
@@ -35,8 +31,8 @@ import {NotificationsModule} from './notifications/notifications.module';
         }),
         NotificationsModule,
     ],
-    controllers: [PostsController, CommentsController],
-    providers: [PostsService, CommentsService, CommonService, PostRestClientRepository, CommentRestClientRepository],
+    controllers: [PostsController],
+    providers: [PostsService, CommonService, PostRestClientRepository, CommentRestClientRepository],
 })
 export class AppModule {
 }

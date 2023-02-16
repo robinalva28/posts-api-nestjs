@@ -1,12 +1,11 @@
 import {Injectable, Logger} from '@nestjs/common';
 import {InjectRepository} from "@nestjs/typeorm";
-import {Comment} from "../comments/entities/comment.entity";
+import {Comment} from "../posts/entities/comment.entity";
 import {DataSource, Repository} from "typeorm";
 import {CommentRestClientRepository} from "./repositories/commentsrestclient.repository";
 import {PostRestClientRepository} from "./repositories/postsrestclient.repository";
 import {Post} from "../posts/entities/post.entity";
 import {OnEvent} from "@nestjs/event-emitter";
-import {AppStartedEvent} from "../events/app-started.event";
 
 @Injectable()
 export class CommonService {

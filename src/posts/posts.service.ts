@@ -39,4 +39,18 @@ export class PostsService {
         return result;
     }
 
+    async findCommentsByPostId(id: number): Promise<Post[]> {
+
+        const result = await this.postRepository.find({
+            where: {id},
+            relations: ['comments']
+        });
+
+        if(result.length == 0){
+            throw new NotFoundException('comments not found')
+        }
+
+        return result;
+    }
+
 }
