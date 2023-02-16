@@ -1,12 +1,11 @@
-import {Injectable, Logger, NotFoundException} from '@nestjs/common';
-import {Post} from "./entities/post.entity";
-import {InjectRepository} from "@nestjs/typeorm";
-import {Repository} from "typeorm";
+import {Injectable, Logger} from '@nestjs/common';
 import {PaginationDto} from "../common/dto/pagination.dto";
+import {PostRestClientRepository} from "../common/repositories/postsrestclient.repository";
 
 @Injectable()
 export class PostsService {
-    constructor(@InjectRepository(Post) private postRepository: Repository<Post>
+    constructor(
+        private postResClientRepository: PostRestClientRepository
     ) {
     }
 
@@ -15,7 +14,7 @@ export class PostsService {
 
     async findAll(paginationDto: PaginationDto) {
 
-        const {offset = 0, limit = 10} = paginationDto;
+        /*const {offset = 0, limit = 10} = paginationDto;
 
         const result = await this.postRepository.find({
             take: limit,
@@ -24,19 +23,18 @@ export class PostsService {
 
         if(result.length == 0){
             throw new NotFoundException('posts not found')
-        }
-
-        return result;
+        }*/
+        return this.postResClientRepository.getAllPostsFromApi();
     }
 
-    async findOne(id: number) {
-        const result = await this.postRepository.findOneBy({id});
-
-        if(result == null){
-            throw new NotFoundException('posts not found')
-        }
-
-        return result;
-    }
+    // async findOne(id: number) {
+    //     const result = await this.postRepository.findOneBy({id});
+    //
+    //     if(result == null){
+    //         throw new NotFoundException('posts not found')
+    //     }
+    //
+    //     return result;
+    // }
 
 }

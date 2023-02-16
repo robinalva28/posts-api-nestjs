@@ -5,10 +5,10 @@ import {CommonService} from "./common.service";
 export class CommonController {
     constructor(private readonly commonService: CommonService) {
     }
-
-    @Put('/populateDB')
-    async populateDB() {
-        await this.commonService.populateDB();
-    }
+    //
+    // @Put('/populateDB')
+    // async populateDB() {
+    //     await this.commonService.populateDB();
+    // }
 
 }
